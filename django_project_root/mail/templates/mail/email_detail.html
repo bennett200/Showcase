@@ -1,0 +1,35 @@
+{% extends '_base.html' %}
+{% load static %}
+
+{% block title %}Email Details{% endblock title %}
+
+{% block extralink %}<link rel="stylesheet" href="{% static 'css/store_css/product_detail.css' %}"> {% endblock extralink %}
+
+{% block content %}
+<div class="container">
+    <div class="wrapper">   
+      <button><a href="{% url 'email_update' email.id %}">Update Email</a></button>
+ 
+    <h2>Email Id - {{ email.id }}</h2>
+      <h2>Email Title:</h2>
+      <p>{{ email.title }}</p>
+      <h3 class="price">Subject:</h3>
+      <p>{{ email.subject }}</p>
+      <h3>Body</h3>
+      <p>{{ email.body }}</p>
+      <h3>Sender Address:</h3>
+      <p>{{ email.sender }}</p>
+      <h2>Recipients</h2>
+      {% if email.all_users == True %}
+      <p>All Users</p>
+      {% else %}
+      <p>{{ email.message_recipients }}</p>
+      {% endif %}
+     <h2><a href="{% url 'email_send_confirm' email.id %}">Send Email</a></h2>
+     </div>
+     
+</div>
+
+
+
+{% endblock content %}

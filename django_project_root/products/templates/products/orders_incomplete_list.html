@@ -1,0 +1,48 @@
+{% extends '_base.html' %}
+
+{% block title %}Orders{% endblock title %}
+
+{% block content %}
+{% if orders %}
+
+<div class="container">
+	<h1><a href="{% url 'order_complete_list' %}">View Completed Orders</a></h1>
+	<h1>Incomplete Orders: {{ orders_count }}</h1>
+	<form class="d-flex" action="{% url 'order_search_results' %}" method="get">
+        <input class="form-control me-2" type="search" name="q" placeholder="Search id or customer" aria-\
+        label="Search" >
+        <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
+	<div>
+	</div>
+	<table>
+		<thead>
+			<tr>
+				<th>Change order status</th>
+				<th>Customer</th>
+				<th>Items in Order</th>
+				<th>View</th>
+			</tr>
+		</thead>
+		<tbody>
+            {% for order in orders %}
+
+			<tr>
+                <td><a href="{% url 'order_update' order.id %}">{{ order.id }}</a></td>
+				<td>{{ order.customer }}</td>
+				<td>{{ order.order_item_count }}</td>
+				<td><a href="{% url 'order_items' order.id %}">View Order</a></td>
+ 
+			</tr>
+            {% endfor %}
+
+			
+		</tbody>
+	</table>
+</div>
+{% else %}
+<h1>No Incomplete Orders</h1>
+<h1><a href="{% url 'order_complete_list' %}">View Completed Orders</a></h1>
+
+{% endif %}
+{% endblock content %}

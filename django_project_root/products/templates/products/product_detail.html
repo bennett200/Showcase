@@ -1,0 +1,25 @@
+{% extends '_base.html' %}
+{% load static %}
+
+{% block title %}{{ order_item.product.title|title }} Details{% endblock title %}
+
+{% block extralink %}<link rel="stylesheet" href="{% static 'css/store_css/product_detail.css' %}"> {% endblock extralink %}
+
+{% block content %}
+<div class="container">
+    <div class="wrapper">    
+        <h1> {{ order_item.product.title }}</h1>
+        <img src="{{ order_item.product.imageURL }}" class="banner-image">          
+        <h3 class="price">Price: ${{ order_item.product.price }}</h3>
+        <h3>Quantity Requested: {{ order_item.quantity }}</h3>
+        <h3>Customer notes:</h3>
+        <h2>{{ order_item.notes }}</h2>
+        <h3></h3>
+       </div>
+     </div>
+     
+</div>
+
+
+
+{% endblock content %}

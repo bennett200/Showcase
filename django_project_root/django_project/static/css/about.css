@@ -1,0 +1,35 @@
+.about-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 400px;
+    padding: 40px;
+    transform: translate(-50%, -50%);
+    background: rgba(49, 46, 46, 0.5);
+    background-color: rgb(0, 0, 0);
+    box-sizing: border-box;
+    box-shadow: 0 15px 25px rgba(9, 226, 193, 0.6);
+    border-radius: 10px;
+}
+
+.about-content h1 {
+    color: #03e9f4;
+    font-size: 23px;
+    text-decoration: none;
+    text-transform: uppercase;
+    overflow: hidden;
+    transition: .5s;
+    margin-top: -14px;
+    letter-spacing: 4px
+}
+
+.about-content h3 {
+    color: #03e9f4;
+    font-size: 16px;
+    text-decoration: none;
+    text-transform: uppercase;
+    overflow: hidden;
+    transition: .5s;
+    margin-top: 13px;
+    letter-spacing: 4px
+}

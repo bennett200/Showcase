@@ -1,0 +1,48 @@
+{% extends 'store/storefront.html' %}
+{% load static %}
+
+{% block title %}Order History{% endblock title %}
+
+{% block content %}
+<section class="product_section layout_padding">
+    <div class="container">
+       <div class="heading_container heading_center">
+          <h2>
+             Order <span>History</span>
+          </h2>
+       </div>
+       <div class="row">
+         {% for order in Orders %}
+
+          <div class="col-sm-6 col-md-4 col-lg-4">
+             <div class="box">
+                <div class="option_container">
+                   <div class="options">
+                      <a href="{% url 'order_history_detail' order.id %}" class="option1">
+                      View Order
+                      </a>
+                      
+                   </div>
+                </div>
+                <div class="img-box">
+                   <h2>Ordered: {{ order.date_ordered }}</h2>
+                </div>
+                <div class="detail-box">
+                   {% if order.complete == False %}
+                   Order is in progress
+                   {% else %}
+                   Order completed
+                   {% endif %}
+                </div>
+             </div>
+          </div>    
+          {% endfor %}
+
+       </div>
+
+       
+       </div>
+    </div>
+ </section>
+
+{% endblock content %}

@@ -1,0 +1,42 @@
+{% extends 'store/storefront.html' %}
+{% load static %}
+
+{% block title %}{{ product.title|title }}{% endblock title %}
+
+{% block extralink %} <link rel="stylesheet" href="{% static 'css/store_css/product_detail.css' %}"> {% endblock extralink %}
+
+{% block content %}
+<div class="container">
+    <div class="wrapper">    
+    <h1> {{ product.title }}</h1>
+      <img src="{{ product.imageURL }}" class="banner-image">          
+      <h3 class="price">Price: ${{ product.price }}</h3>
+      <h3>Description:</h3>
+      <h3>{{ product.description }}</h3>
+     </div>
+     {% if amount_requested %}
+     <h4>You currently have <strong>{{ amount_requested.quantity }} </strong>of this {{ product.title }} in your cart </h4>
+
+     {% endif %}
+     <div class="button-wrapper">
+      {% for message in messages %}
+         {{ message }}
+      {% endfor %}
+      <form action="" method="post"> 
+         {% csrf_token %}
+         {{ form }}
+         <button class="btn outline" type="submit">Add to Cart</button>
+         {% comment %}
+         <input type="hidden" name="id" value="{{ Order.id }}">
+         {% endcomment %}
+       
+
+      </form>
+        <button id="btn-bottom" class="btn fill">BUY NOW</button>
+     </div>
+     <div class="stock">
+     <h3>{{ product.stock_amount }}</h3>
+    </div>
+       </div>
+   </div>
+{% endblock content %}

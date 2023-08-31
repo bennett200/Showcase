@@ -1,0 +1,26 @@
+{% extends '_base.html' %}
+{% load static %}
+
+{% block title %}User Details{% endblock title %}
+
+{% block extralink %}<link rel="stylesheet" href="{% static 'css/store_css/product_detail.css' %}"> {% endblock extralink %}
+
+{% block content %}
+<div class="container">
+    <div class="wrapper">
+        <img src="{{ user.imageURL }}" alt="">    
+    <h2>Customer Id - {{ user.id }}</h2>
+      <h2>Customer Email:</h2>
+      <p>{{ user }}</p>
+      <h3 class="price">Username </h3>
+      <p>{{ user.username }}</p>
+      <button type="submit" class="btn btn-primary btn-sm"><a href="{% url 'user_order_history' user.id %}">Order History</a></button>
+
+      
+     </div>
+     
+</div>
+
+
+
+{% endblock content %}

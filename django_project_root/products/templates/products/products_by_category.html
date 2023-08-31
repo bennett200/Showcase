@@ -1,0 +1,42 @@
+{% extends '_base.html' %}
+
+{% block title %}Products in Category{% endblock title %}
+
+{% block content %}
+<div class="container">
+	<div>
+	</div>
+	{% for product in products %}
+		{% if forloop.first %}
+			<h2><b>{{ product.product_category }}</b> Category Products</h2>
+		{% endif %}
+	{% endfor %}
+	<table>
+		<thead>
+			<tr>
+				<th>Title</th>
+				<th>Description</th>
+				<th>Price</th>
+				<th>Stock</th>
+				<th>Created On</th>
+			</tr>
+		</thead>
+		<tbody>
+            {% for product in products %}
+               
+                <tr>
+                    <td><a href="{% url 'products_by_cat_up' product.id %}">{{ product.title|title }}</a></td>
+					<td>{{ product.description|truncatechars:50 }}</td>
+					<td>{{ product.price }}</td>
+					<td>{{ product.stock }}</td>
+					<td>{{ product.created_at }}</td>
+                </tr>
+             
+            {% endfor %}
+
+			
+		</tbody>
+	</table>
+</div>
+
+{% endblock content %}

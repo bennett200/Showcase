@@ -1,0 +1,34 @@
+{% extends 'store/storefront.html' %}
+{% load static %}
+
+{% block title %}Checkout{% endblock title %}
+{% block extralink %} <link rel="stylesheet" href="{% static 'css/store_css/product_detail.css' %}"> {% endblock extralink %}
+
+{% block content %}
+{% if order_trackers %}
+<div class="container">
+    <div class="wrapper">  
+    <h1>Checkout</h1>
+  
+      <form action="" method="post"> 
+         {% csrf_token %}
+         {{ form }}
+         
+         <button class="btn outline" type="submit">Checkout</button>
+         {% for orders in order_trackers %}
+         <input type="hidden" name="id" value="{{ order_trackers.id }}">
+         {% endfor %}
+      </form>
+      <button class="btn outline"><a href="{% url 'cart' %}">Cancel</a></button>
+     </div>
+       </div>
+   </div>
+{% else %}
+<div class="container">
+    <div class="wrapper">  
+    <h1>You currently do not have any items in your cart</h1>
+      
+     </div>
+       </div>
+{% endif %}
+{% endblock content %}

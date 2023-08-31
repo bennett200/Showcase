@@ -1,0 +1,14 @@
+{% extends '_base.html' %}
+{% load static %}
+{% block title %}About{% endblock title %}
+
+{% block extralink %} <link rel="stylesheet" href="{% static 'css/about.css' %}"> {% endblock extralink %}
+
+{% block content %}
+<div class="about-content">
+    <h1>About This Website</h1>
+    <div>
+        <h3><p>This website functions as a backend for a store. A user with the correct permissions(The current required permission is 'is_staff') can add, edit, update, and delete products and categories as they wish. Anyone can create an account, view the store and products, and add products to their cart, and of course, Checkout. To view the store itself, click the "Store" in the navbar.</p></h3>
+    </div>
+</div>
+{% endblock content %}

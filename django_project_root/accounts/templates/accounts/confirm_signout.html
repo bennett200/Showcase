@@ -1,0 +1,12 @@
+{% extends '_base.html' %}
+
+{% block title %}Confirm Signout{% endblock title %}
+
+{% block content %} 
+<div class="logout-page">
+    <h2>Are you sure you would like to signout?</h2>
+    
+        <button class='glowing-btn' id="logout-button"><a class="button-a" href="{% url 'account_logout' %}"><span class='glowing-txt'>C<span class='faulty-letter'>L</span>ICK</span></a></button>
+    
+</div>
+{% endblock content %}

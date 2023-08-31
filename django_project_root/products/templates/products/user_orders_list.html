@@ -1,0 +1,39 @@
+{% extends '_base.html' %}
+
+{% block title %}User Orders{% endblock title %}
+
+{% block content %}
+{% if orders %}
+
+<div class="container">
+
+	
+	<table>
+		<thead>
+			<tr>
+				<th>Order Status</th>
+				<th>Customer</th>
+				<th>Items in Order</th>
+				<th>View</th>
+			</tr>
+		</thead>
+		<tbody>
+            {% for order in orders %}
+
+			<tr>
+                <td><a href="{% url 'order_update' order.id %}">{% if order.complete == True %} Complete {% else %} Incomplete {% endif %}</a></td>
+				<td>{{ order.customer }}</td>
+				<td>{{ order.order_item_count }}</td>
+				<td><a href="{% url 'order_items' order.id %}">View Order</a></td>
+ 
+			</tr>
+            {% endfor %}
+
+			
+		</tbody>
+	</table>
+</div>
+{% else %}
+<h1>nothing here</h1>
+{% endif %}
+{% endblock content %}

@@ -1,0 +1,40 @@
+{% extends 'store/storefront.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}Login{% endblock title %}
+
+{% block extralink %}<link rel="stylesheet" href="{% static 'css/store_css/login.css' %}">{% endblock extralink %}
+
+{% block content %}
+<div class="form-container">
+<form class='login-form' method="post">
+  {% if form.errors %}
+    {% for field in form %}
+        {% for error in field.errors %}
+            <div class="alert alert-error">
+                <strong>{{ error|escape }}</strong>
+            </div>
+        {% endfor %}
+    {% endfor %}
+    {% for error in form.non_field_errors %}
+        <div class="alert alert-error">
+            <strong>{{ error|escape }}</strong>
+        </div>
+    {% endfor %}
+{% endif %}
+  {% csrf_token %}
+  {% for field in form %}
+  <p>
+    {{ field.label_tag }}<br>
+    {{ field }}
+    {% for error in field.errors %}
+      <p style="color: red">{{ error }}</p>
+    {% endfor %}
+  </p>
+{% endfor %}
+<button type="submit" class="btn btn-success">Login!</button>
+<input type="hidden" name="next" value="{% url 'profile' %}">
+</form>
+</div>
+{% endblock content %}

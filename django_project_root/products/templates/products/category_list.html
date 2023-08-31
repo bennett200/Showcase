@@ -1,0 +1,40 @@
+{% extends '_base.html' %}
+{% load static %}
+{% block title %}Categories{% endblock title %}
+
+{% block content %}
+{% if categories %}
+<div class="container">
+	<h1>Categories</h1>
+	<div>
+		<a href="{% url 'category_create' %}">Add Category</a>
+	</div>
+	<table>
+		<thead>
+			<tr>
+				<th>Title</th>
+				<th>Description</th>
+				<th>Products</th>
+			</tr>
+		</thead>
+		<tbody>
+            {% for category in categories %}
+
+			<tr>
+                <td><a href="{% url 'category_update' category.id %}">{{ category.category_name }}</a></td>
+				<td>{{ category.description|truncatechars:50 }}</td>
+				<td><a href="{% url 'product_by_category' category.category_name %}">View Associated Products</a></td>
+			</tr>
+            {% endfor %}
+
+			
+		</tbody>
+	</table>
+</div>
+{% else %}
+<div class="logout-page">
+    <h2>Uh oh, it appears you don't have any Categories yet...</h2>
+        <button class='glowing-btn' id="logout-button"><a href="{% url 'category_create' %}"><span class='glowing-txt'>A<span class='faulty-letter'>D</span>D</span></a></button>
+</div>
+{% endif %}
+{% endblock content %}

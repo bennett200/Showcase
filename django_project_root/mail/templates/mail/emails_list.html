@@ -1,0 +1,39 @@
+{% extends '_base.html' %}
+{% load static %}
+{% block title %}Emails{% endblock title %}
+
+{% block content %}
+{% if emails %}
+<div class="container">
+	<h1>Emails</h1>
+	<div>
+		<a href="{% url 'create_email' %}">Add Email</a>
+	</div>
+	<table>
+		<thead>
+			<tr>
+                <th>Email Details</th>
+				<th>Title</th>
+				<th>Subject</th>
+			</tr>
+		</thead>
+		<tbody>
+            {% for email in emails %}
+
+			<tr>
+                <td><a href="{% url 'email_details' email.id %}">Details</a></td>
+				<td>{{ email.title|truncatechars:50 }}</td>
+				<td>{{ email.subject|truncatewords:15 }}</td>
+			</tr>
+            {% endfor %}
+
+			
+		</tbody>
+	</table>
+</div>
+{% else %}
+<h1>You have no emails set up:/</h1>
+<a href="{% url 'create_email' %}">Add An Email</a>
+
+{% endif %}
+{% endblock content %}

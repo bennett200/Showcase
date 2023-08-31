@@ -1,0 +1,18 @@
+{% extends 'store/storefront.html' %}
+{% load static %}
+
+{% block title %}Checkout{% endblock title %}
+{% block extralink %} <link rel="stylesheet" href="{% static 'css/store_css/contact.css' %}"> <link rel="stylesheet" href="{% static 'css/store_css/product_detail.css' %}"> {% endblock extralink %}
+
+{% block content %}
+<div class="container">
+    <div class="wrapper">  
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{ form }}
+        <button class="btn outline contact-bt" type="submit">Send</button>
+    </form>
+      
+     </div>
+       </div>
+{% endblock content %}

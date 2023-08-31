@@ -1,0 +1,18 @@
+{% extends '_base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Update Category{% endblock title %}
+
+{% block content %}
+<div class="form-container">
+    <form action="" method="POST">
+        {% csrf_token %} 
+        {{ form|crispy}} 
+        <button type="submit" class="btn btn-primary btn-sm">Submit</button>
+        <div class="annoying">                         
+        <button class="Delete"><a href="{% url 'category_delete' categories.id %}" class="delete_product">Or Delete</a></button>
+        </div>
+    </form> 
+    </div>
+
+{% endblock content %}

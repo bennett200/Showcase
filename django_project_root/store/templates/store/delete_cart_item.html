@@ -1,0 +1,23 @@
+{% extends 'store/storefront.html' %}
+{% load static %}
+
+{% block title %}Remove Product{% endblock title %}
+{% block extralink %} <link rel="stylesheet" href="{% static 'css/store_css/product_detail.css' %}"> {% endblock extralink %}
+
+{% block content %}
+<div class="container">
+    <div class="wrapper">  
+    <h1>Are you sure you want to delete{{ orderitems.product.title }}?</h1>
+  
+      <form action="" method="post"> 
+         {% csrf_token %}
+         {{ form }}
+         <button class="btn outline" type="submit">Delete</button>
+      </form>
+      <button class="btn outline"><a href="{% url 'cart' %}">Cancel</a></button>
+     </div>
+       </div>
+   </div>
+
+
+{% endblock content %}

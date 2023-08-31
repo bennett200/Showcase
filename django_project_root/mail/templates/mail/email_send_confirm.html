@@ -1,0 +1,19 @@
+{% extends '_base.html' %}
+{% load static %}
+
+{% block title %}Email Send Confirmation{% endblock title %}
+
+{% block content %}
+<div class="container">
+    <h1>Are you sure you want to send this email?</h1>
+      <form action="{% url 'email_send_confirm' email.id %}" method="POST">
+        {% csrf_token %}
+        <input type="submit" name="action" value="Send Email">
+      </form>
+     </div>
+     
+</div>
+
+
+
+{% endblock content %}

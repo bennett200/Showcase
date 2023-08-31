@@ -1,0 +1,56 @@
+{% extends '_base.html' %}
+{% load static %}
+
+{% load crispy_forms_tags %}
+{% block title %}Create Products{% endblock title %}
+{% block extralink %}<link rel="stylesheet" href="{% static 'css/form.css' %}">{% endblock extralink %}
+{% block content %}
+
+<div class="form-box">
+<form action="{% url 'product_update' products.pk %}" method="post">
+    {% csrf_token %} 
+    <div class="user-box">
+        <select name="product_category">
+            
+        {% for cat in category_context %}
+           <option {% if cat.id == preselect %} selected="selected" {% endif %} name="product_category" value="{{cat.id}}">{{ cat }}</option>
+        {% endfor %}
+        </select>
+      </div>
+      <div class="user-box">
+        <input value="{{ form.title.value }}" type="text" name="title">
+        <label>Title:</label>
+      </div>
+      <div class="user-box">
+        <textarea name="description">{{ form.description.value }}</textarea>
+        <label>Description:</label>
+      </div>
+      <div class="user-box">
+        <input value="{{ form.price.value }}" type="number" name="price">
+        <label>Price:</label>
+      </div>
+      <div class="user-box">
+        <input value="{{ form.stock.value }}" type="number" name="stock">
+        <label>Stock:</label>
+      </div>
+      <button type="submit" class="btn btn-primary btn-sm">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        {{ category_context }}
+
+    </button>
+
+
+</form>
+
+
+
+</div>
+
+
+        
+
+ 
+{% endblock content %}

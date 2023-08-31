@@ -1,0 +1,31 @@
+{% extends '_base.html' %}
+{% load static %}
+
+{% block title %}Order Details{% endblock title %}
+
+{% block extralink %}<link rel="stylesheet" href="{% static 'css/store_css/product_detail.css' %}"> {% endblock extralink %}
+
+{% block content %}
+<div class="container">
+    <div class="wrapper">    
+    <h2>Order Id - {{ order.id }}</h2>
+      <h2>Customer Email:</h2>
+      <p><a href="{% url 'order_user_detail' order.customer.id %}">{{ order.customer }}</a></p>
+      <h3 class="price">Address:</h3>
+      <p>{{ order.address }}</p>
+      <h3>Date Ordered:</h3>
+      <p>{{ order.date_ordered }}</p>
+      <h3>Notes:</h3>
+      <p>{{ order.notes }}</p>
+      <h2>Order Items</h2>
+      {% for item in Items %}
+      <h2><a href="{% url 'product_detail' item.id %}">{{ item.product.title }}</a></h2>
+
+      {% endfor %}
+     </div>
+     
+</div>
+
+
+
+{% endblock content %}
